@@ -1,28 +1,13 @@
 import AccountProfile from "@/components/forms/AccountProfile"
+import { fetchUser } from "@/lib/actions/user.actions"
 import { currentUser } from "@clerk/nextjs"
 
-// interface Props {
-//     userDetail: {
-//         _id: number;
-//         objectId: string;
-//         username : string;
-//         name: string;
-//         bio: string; 
-//         image: string;
-//     };
-//     btnTitle: string
-// }
 
 async function Page() {
     const user = await currentUser()
+    if(!user) return null
 
-    const userInfo = {
-        // _id: 1,
-        // username: "@usertest",
-        // name: "test",
-        // bio: "testing testing testing",
-        // image: "https://sm.ign.com/ign_nordic/cover/a/avatar-gen/avatar-generations_prsz.jpg"
-    }
+   const userInfo = await fetchUser(user?.id)
 
     const userData = {
         id: user?.id,

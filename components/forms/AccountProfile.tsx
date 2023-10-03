@@ -25,7 +25,7 @@ import { usePathname, useRouter } from 'next/navigation'
 
 interface Props {
     user: {
-        _id: string;
+        id: string;
         objectId: string;
         username: string;
         name: string;
@@ -85,7 +85,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
         //TODO : Update user profile :: calling updateUser() function from actions
         await updateUser({
-            userId: user._id,
+            userId: user.id,
             username: values.username,
             name: values.name,
             bio: values.bio,
@@ -93,7 +93,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             path: pathname
         })
 
-        if (pathname=== '/profile/edit'){
+        if (pathname === '/profile/edit') {
             router.back(); // go to the prevous page after editing 
         } else {
             router.push('/') // go from onboarding page to homepage
@@ -140,7 +140,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     onChange={(e) => handleImage(e, field.onChange)}
                                 />
                             </FormControl>
-
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -159,6 +159,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -177,6 +178,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
@@ -195,6 +197,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                                     {...field}
                                 />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
