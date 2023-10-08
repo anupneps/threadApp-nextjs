@@ -83,7 +83,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             }
         }
 
-        //TODO : Update user profile :: calling updateUser() function from actions
         await updateUser({
             userId: user.id,
             username: values.username,
