@@ -35,7 +35,8 @@ const ThreadCard = ({
     author,
     community,
     createdAt,
-    comments
+    comments,
+    iscomment
 
 }: Props) => {
     return (
@@ -70,6 +71,11 @@ const ThreadCard = ({
                                 <Image src="/assets/share.svg" alt="share" width={24} height={24} />
 
                             </div>
+                            {iscomment && comments.length > 0 && (
+                               <Link href={`/thread/${id}`}>
+                                <p className='mt-1 text-subtle-mediium text-gray-1' >{comments.length} replies</p>
+                               </Link> 
+                            )}
                         </div>
                     </div>
                 </div>
